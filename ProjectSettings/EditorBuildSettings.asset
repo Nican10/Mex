@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 0
+    path: Assets/Scenes/SampleScene.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/tutorial.unity
+    guid: 986dea2c005a2ad4593beeddb945205f
+  - enabled: 1
+    path: Assets/Scenes/fase01.unity
+    guid: 040b9027d1690f94e81043f44699b413
+  - enabled: 1
+    path: Assets/Scenes/fase02.unity
+    guid: 5b241eb0c24d8bf4da46c9fb43618e85
+  - enabled: 1
+    path: Assets/Scenes/fase03.unity
+    guid: e10b4352d3223174082de31733760016
+  - enabled: 1
+    path: Assets/Scenes/fase04.unity
+    guid: 9008ad01c5f53234da0a32ae0115e898
+  - enabled: 1
+    path: Assets/Scenes/fase05.unity
+    guid: 948ecfbf996fca945b04b3534073e869
+  - enabled: 1
+    path: Assets/Scenes/fase06.unity
+    guid: ee4c16e15d88ecf4bad6bed2d2d666c2
+  - enabled: 1
+    path: Assets/Scenes/fasesecreta.unity
+    guid: 61535847831fb3f44b173526cbf2c452
+  - enabled: 1
+    path: Assets/Scenes/fase07.unity
+    guid: 9fee4f339bde49e4985b5c5d351ab40c
+  m_configObjects: {}
