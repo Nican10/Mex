@@ -28,8 +28,19 @@ public class shuriken : MonoBehaviour
     {
         if (collision.CompareTag("Inimigo") && collision.isTrigger == false)
         {
-            collision.GetComponent<vidaDoInimigo>().ReceberDano(dano);
+            vidaDoInimigo inimigo = collision.GetComponent<vidaDoInimigo>();
 
+            if (inimigo != null)
+            {
+                inimigo.ReceberDano(dano);
+            }
+
+            vidaBoss boss = collision.GetComponent<vidaBoss>();
+
+            if (boss != null)
+            {
+                boss.ReceberDano(dano);
+            }
             Destroy(gameObject);
         }
 

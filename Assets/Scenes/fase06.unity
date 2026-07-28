@@ -2498,6 +2498,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7314604550277686454, guid: fe111abd2950b794b9966849cc0dca72, type: 3}
+      propertyPath: proximaFase
+      value: fase07
+      objectReference: {fileID: 0}
     - target: {fileID: 8873741964500189423, guid: fe111abd2950b794b9966849cc0dca72, type: 3}
       propertyPath: m_Name
       value: Placa/inicio/fim (1)
