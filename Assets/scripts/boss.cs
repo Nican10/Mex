@@ -39,6 +39,10 @@ public class boss : MonoBehaviour
 
     private bool fezDoubleJump = false;
 
+    private Vector2 alvoSalto;
+
+    public float intensidadeMira = 2f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -80,9 +84,14 @@ public class boss : MonoBehaviour
 
     private void AtualizarPerseguicao()
     {
-        if (preparandoSlam || fazendoSlam)
+        if (preparandoSlam)
         {
             rb.velocity = new Vector2(0, rb.velocity.y);
+            return;
+        }
+
+        if (fazendoSlam)
+        {
             return;
         }
 
@@ -123,14 +132,30 @@ public class boss : MonoBehaviour
         if (!segundaFase)
             return;
 
+        if (fazendoSlam)
+        {
+            MirarNoAlvo();
+        }
+
         //faz double jump
 
         if (fazendoSlam && !fezDoubleJump && rb.velocity.y <= 0)
         {
             fezDoubleJump = true;
+            anim.Play("bossdouble");
 
-            rb.velocity = new Vector2(rb.velocity.x, 0);
+            alvoSalto = player.position;
+
+            rb.velocity = new Vector2(rb.velocity.x, 0f);
+            MirarNoAlvo();
             rb.AddForce(Vector2.up * forcaPulo2, ForceMode2D.Impulse);
+      
+        }
+
+        if (fazendoSlam && fezDoubleJump && rb.velocity.y <= 0)
+        {
+            
+            anim.Play("bossslam");
         }
 
         //enquanto esta preparando o slam nao conta o tempo para o proximo
@@ -160,12 +185,30 @@ public class boss : MonoBehaviour
 
         anim.Play("bossjump");
 
-        rb.velocity = new Vector2(rb.velocity.x, 0f);
+        alvoSalto = player.position;  
+     
+        rb.velocity = Vector2.zero;
+
+        MirarNoAlvo();
 
         rb.AddForce(Vector2.up * forcaPulo, ForceMode2D.Impulse);
 
         Debug.Log("PULO VELOCIDDDADE " + rb.velocity);
 
+    }
+
+    private void MirarNoAlvo()
+    {
+        float distanciaX = alvoSalto.x - transform.position.x;
+
+        if (Mathf.Abs(distanciaX) > 0.1f)
+        {
+            rb.velocity = new Vector2(distanciaX * intensidadeMira, rb.velocity.y);
+        }
+        else
+        {
+            rb.velocity = new Vector2(0f, rb.velocity.y);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
