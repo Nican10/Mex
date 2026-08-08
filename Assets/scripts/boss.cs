@@ -43,6 +43,15 @@ public class boss : MonoBehaviour
 
     public float intensidadeMira = 2f;
 
+    public GameObject spikePrefab;
+
+    public float limiteXmin = 17;
+    public float limiteXmax = 38;
+
+    public float posicaoYInicialSpike = 12f;
+
+    public float tempoSpike = 2f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -124,7 +133,7 @@ public class boss : MonoBehaviour
 
     private void AtualizarSlam()
     {
-        if(!segundaFase && vidaBossScript.vida <= 900)
+        if(!segundaFase && vidaBossScript.vida <= 8500)
         {
            segundaFase = true;
         }
@@ -135,6 +144,7 @@ public class boss : MonoBehaviour
         if (fazendoSlam)
         {
             MirarNoAlvo();
+            AtualizarDirecaoPlayer();
         }
 
         //faz double jump
@@ -207,8 +217,37 @@ public class boss : MonoBehaviour
         }
         else
         {
-            rb.velocity = new Vector2(0f, rb.velocity.y);
+            rb.velocity = new Vector2(0f, rb.velocity.y);   
         }
+    }
+
+    private void AtualizarDirecaoPlayer()
+    {
+        if (player == null)
+            return;
+
+        if(player.position.x > transform.position.x)
+        {
+            visual.localScale = new Vector3(2.2993f, 2.2993f, 2.2993f);
+        }
+        else if (player.position.x < transform.position.x)
+        {
+            visual.localScale = new Vector3(-2.2993f, 2.2993f, 2.2993f);
+        }
+    }
+
+    private void CriarSpike()
+    {
+        if (spikePrefab == null)
+            return;
+        
+        float posicaoX = Random.Range(limiteXmin, limiteXmax);
+
+        Vector3 posicao = new Vector3(posicaoX, posicaoYInicialSpike, 0f);
+
+        GameObject spike = Instantiate(spikePrefab, posicao, Quaternion.identity);
+
+        Destroy(spike, tempoSpike );
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -221,7 +260,7 @@ public class boss : MonoBehaviour
             fezDoubleJump = false;
             timerSlam = 0;
 
-            
+            CriarSpike();
         }
     }
 
