@@ -52,6 +52,10 @@ public class boss : MonoBehaviour
 
     public float tempoSpike = 2f;
 
+    public bool fazendoRecuo = false;
+    public float forcaRecuo = 8f;
+    private float tempoRecuo = 0f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -65,7 +69,13 @@ public class boss : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    { 
+        
+        if (fazendoRecuo)
+        {
+            AtualizarRecuo();
+            return;
+        }
 
         if (timerParado > 0)
         {
@@ -80,6 +90,8 @@ public class boss : MonoBehaviour
 
             return;
         }
+
+       
 
         AtualizarSlam();
         AtualizarPerseguicao();
@@ -187,6 +199,30 @@ public class boss : MonoBehaviour
         }
         
     }
+    private void AtualizarRecuo()
+    {
+        tempoRecuo -= Time.deltaTime;
+
+        if (tempoRecuo < 0)
+        {
+            fazendoRecuo = false;
+            timerSlam = 0;
+            return;
+        }
+
+        float direcaoRecuo;
+
+        if (player.position.x > transform.position.x)
+        {
+            direcaoRecuo = -1f;
+        }
+        else
+        {
+            direcaoRecuo = 1f;
+        }
+
+        rb.velocity = new Vector2(direcaoRecuo * forcaRecuo, rb.velocity.y);
+    }
 
     private void IniciarJump()
     {
@@ -252,6 +288,18 @@ public class boss : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            fazendoRecuo = true;
+            fazendoSlam = false;
+            fezDoubleJump = false;
+
+            tempoRecuo = 0.5f;
+
+            anim.Play("bossrecuo");
+
+            return;
+        }
         if (fazendoSlam && collision.gameObject.CompareTag("Chao"))  
         {
            Debug.Log("resetou double");

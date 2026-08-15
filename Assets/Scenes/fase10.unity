@@ -2631,8 +2631,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1609338627}
     - target: {fileID: 1819160540749323694, guid: be32e9c8a5c0d424680a14453efde34c, type: 3}
+      propertyPath: forcaRecuo
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 1819160540749323694, guid: be32e9c8a5c0d424680a14453efde34c, type: 3}
       propertyPath: tempoSpike
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1819160540749323694, guid: be32e9c8a5c0d424680a14453efde34c, type: 3}
+      propertyPath: intervaloSlam
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1819160540749323694, guid: be32e9c8a5c0d424680a14453efde34c, type: 3}
+      propertyPath: tempoParadoAposHit
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4998851839047756306, guid: be32e9c8a5c0d424680a14453efde34c, type: 3}
       propertyPath: m_Name
