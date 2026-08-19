@@ -797,6 +797,10 @@ PrefabInstance:
       propertyPath: m_CollisionDetection
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1987426547513285350, guid: b3a24339b4eb6e44686df753a4a680b9, type: 3}
+      propertyPath: vida
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 2485130028428297413, guid: b3a24339b4eb6e44686df753a4a680b9, type: 3}
       propertyPath: m_Name
       value: Jogador
@@ -2630,6 +2634,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1609338627}
+    - target: {fileID: 1819160540749323694, guid: be32e9c8a5c0d424680a14453efde34c, type: 3}
+      propertyPath: buffPrefab
+      value: 
+      objectReference: {fileID: 6560995294451022371, guid: defb244262d1363418d65492d4cbf88f, type: 3}
     - target: {fileID: 1819160540749323694, guid: be32e9c8a5c0d424680a14453efde34c, type: 3}
       propertyPath: forcaRecuo
       value: 18

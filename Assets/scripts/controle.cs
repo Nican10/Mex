@@ -31,8 +31,11 @@ public class controle : MonoBehaviour
     public bool podeAtirar = true;
     public SpriteRenderer sprite;
 
+    public int danoShurikenBuff = 100;
+
     public float bounceForce = 10f;
     public int danoStomp = 1;
+
      
 
     private void Start()
@@ -169,6 +172,11 @@ public class controle : MonoBehaviour
             anim.Play("atacando");
 
             GameObject shuriken = Instantiate(prefabShuriken, pontoDisparo.position, Quaternion.identity);
+
+            if (buffAtivo)
+            {
+                shuriken.GetComponent<shuriken>().dano = danoShurikenBuff;
+            }
 
             if (buffAtivo)
             {

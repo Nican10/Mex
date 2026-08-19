@@ -34,7 +34,9 @@ public class vidaBoss : MonoBehaviour
         if (vida <= 0)
         {
 
-            GetComponent<boss>().enabled = false;   
+            GetComponent<boss>().enabled = false;
+
+            anim.Play("bossdie");
 
             Destroy(gameObject, 1f);
         }

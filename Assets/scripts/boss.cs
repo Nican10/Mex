@@ -28,6 +28,7 @@ public class boss : MonoBehaviour
     public float intervaloSlam = 5f;
 
     private bool segundaFase = false;
+    private bool terceiraFase = false;
 
     private bool preparandoSlam = false;
 
@@ -44,11 +45,13 @@ public class boss : MonoBehaviour
     public float intensidadeMira = 2f;
 
     public GameObject spikePrefab;
+    public GameObject buffPrefab;
 
     public float limiteXmin = 17;
     public float limiteXmax = 38;
 
     public float posicaoYInicialSpike = 12f;
+    public float posicaoYBuff = 5f;
 
     public float tempoSpike = 2f;
 
@@ -56,6 +59,14 @@ public class boss : MonoBehaviour
     public float forcaRecuo = 8f;
     private float tempoRecuo = 0f;
 
+    public float velocidadeInimigoFase2 = 7f;
+
+    public float intervaloSlamFase3 = 3f;
+    public bool buffFase3Criado = false;
+
+    private bool quartaFase = false;
+    private bool buffFase4Criado = false;
+   
 
     // Start is called before the first frame update
     void Start()
@@ -132,7 +143,9 @@ public class boss : MonoBehaviour
                 }
                 Vector2 direcao = (player.position - transform.position).normalized;
 
-                rb.velocity = new Vector2(direcao.x * velocidadeInimigo, rb.velocity.y);
+                float velocidadeAtual = segundaFase ? velocidadeInimigoFase2 : velocidadeInimigo;
+
+                rb.velocity = new Vector2(direcao.x * velocidadeAtual, rb.velocity.y);
 
                 anim.Play("bossandando");
             }
@@ -147,7 +160,29 @@ public class boss : MonoBehaviour
     {
         if(!segundaFase && vidaBossScript.vida <= 8500)
         {
-           segundaFase = true;
+            segundaFase = true;  
+            
+        }
+
+        if(!terceiraFase && vidaBossScript.vida <= 5000)
+        {
+            terceiraFase = true;
+
+            if (!buffFase3Criado) 
+            {
+                CriarBuff();
+                buffFase3Criado = true;
+            }
+        }
+
+        if(!quartaFase && vidaBossScript.vida <= 2500)
+        {
+            quartaFase = true;
+            if (!buffFase4Criado)
+            {
+                CriarBuff();
+                buffFase4Criado = true;
+            }
         }
 
         if (!segundaFase)
@@ -187,7 +222,9 @@ public class boss : MonoBehaviour
 
         timerSlam += Time.deltaTime;
 
-        if (timerSlam >= intervaloSlam)
+        float intervaloAtual = terceiraFase ? intervaloSlamFase3 : intervaloSlam;
+
+        if (timerSlam >= intervaloAtual)
         {
             timerSlam = 0;
 
@@ -276,14 +313,32 @@ public class boss : MonoBehaviour
     {
         if (spikePrefab == null)
             return;
-        
+
+        int quantidadeSpikes = terceiraFase ? 3 : 1;
+
+        for (int i = 0; i < quantidadeSpikes; i++)
+        {              
+            float posicaoX = Random.Range(limiteXmin, limiteXmax);
+
+            Vector3 posicao = new Vector3(posicaoX, posicaoYInicialSpike, 0f);
+
+            GameObject spike = Instantiate(spikePrefab, posicao, Quaternion.identity);
+
+            Destroy(spike, tempoSpike);
+        }
+    }
+
+    private void CriarBuff()
+    {
+        if(buffPrefab == null)
+            return;
+
         float posicaoX = Random.Range(limiteXmin, limiteXmax);
 
-        Vector3 posicao = new Vector3(posicaoX, posicaoYInicialSpike, 0f);
+        Vector3 posicao = new Vector3(posicaoX, posicaoYBuff, 0f);
 
-        GameObject spike = Instantiate(spikePrefab, posicao, Quaternion.identity);
+        Instantiate(buffPrefab, posicao, Quaternion.identity);  
 
-        Destroy(spike, tempoSpike );
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -310,7 +365,7 @@ public class boss : MonoBehaviour
             fezDoubleJump = false;
             timerSlam = 0;
 
-            CriarSpike();
+            CriarSpike();   
         }
     }
 
