@@ -290,14 +290,16 @@ public class boss : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            fazendoRecuo = true;
-            fazendoSlam = false;
-            fezDoubleJump = false;
+            if (player.position.y < transform.position.y)
+            {
+                fazendoRecuo = true;
+                fazendoSlam = false;
+                fezDoubleJump = false;
 
-            tempoRecuo = 0.5f;
+                tempoRecuo = 0.5f;
 
-            anim.Play("bossrecuo");
-
+                anim.Play("bossrecuo");
+            }
             return;
         }
         if (fazendoSlam && collision.gameObject.CompareTag("Chao"))  
