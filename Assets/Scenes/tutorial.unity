@@ -137,7 +137,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4773741
 RectTransform:
   m_ObjectHideFlags: 0
@@ -150,9 +150,9 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 198153065}
   - {fileID: 628468207}
   - {fileID: 1811658601}
-  - {fileID: 198153065}
   m_Father: {fileID: 2139580211}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -2467,7 +2467,7 @@ GameObject:
   - component: {fileID: 198153067}
   - component: {fileID: 198153066}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: game over
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2490,7 +2490,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 1, y: 327}
-  m_SizeDelta: {x: 713.89, y: 255.14}
+  m_SizeDelta: {x: 711.89, y: 140.5298}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &198153066
 MonoBehaviour:
@@ -3509,7 +3509,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 628468209}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2139580213}
+        m_TargetAssemblyTypeName: gameOver, Assembly-CSharp
+        m_MethodName: Restart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &628468209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3523,7 +3535,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.41509432, g: 0.37789246, b: 0.37789246, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4989,7 +5001,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1811658603}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2139580213}
+        m_TargetAssemblyTypeName: gameOver, Assembly-CSharp
+        m_MethodName: Sair
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1811658603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5003,7 +5027,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.41509432, g: 0.37789246, b: 0.37789246, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6223,6 +6247,7 @@ GameObject:
   - component: {fileID: 2139580209}
   - component: {fileID: 2139580208}
   - component: {fileID: 2139580212}
+  - component: {fileID: 2139580213}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -6328,6 +6353,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pausePanel: {fileID: 2081287935}
+--- !u!114 &2139580213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2139580207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf398f78822c1c546ba57b54d940f479, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameOverPanel: {fileID: 4773740}
 --- !u!1001 &8165449362233470499
 PrefabInstance:
   m_ObjectHideFlags: 0

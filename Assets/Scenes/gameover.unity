@@ -336,6 +336,7 @@ GameObject:
   - component: {fileID: 686737358}
   - component: {fileID: 686737357}
   - component: {fileID: 686737356}
+  - component: {fileID: 686737360}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -428,6 +429,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &686737360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686737355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf398f78822c1c546ba57b54d940f479, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameOverPanel: {fileID: 686737355}
 --- !u!1 &1170891186
 GameObject:
   m_ObjectHideFlags: 0
@@ -899,7 +913,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1893704129}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 686737360}
+        m_TargetAssemblyTypeName: gameOver, Assembly-CSharp
+        m_MethodName: Sair
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1893704129
 MonoBehaviour:
   m_ObjectHideFlags: 0

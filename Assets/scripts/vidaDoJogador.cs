@@ -49,11 +49,24 @@ public class vidaDoJogador : MonoBehaviour
 
             anim.Play("recebendodano");
 
-            Destroy(gameObject, 1f);
+            FindObjectOfType<gameOver>().MostrarGameOver();
+
+            StartCoroutine(Morte());
 
             return;
         }
-        StartCoroutine(Invencibilidade());
+
+        StartCoroutine(Invencibilidade());     
+
+
+    }
+
+    IEnumerator Morte()
+    {
+        yield return new WaitForSeconds(1f);
+
+        GetComponent<Rigidbody2D>().simulated = false;
+        GetComponent<SpriteRenderer>().enabled = false;
 
     }
 
