@@ -6,6 +6,11 @@ public class vidaDoJogador : MonoBehaviour
 {
     public int vida = 100;
 
+    public int vidas
+    {
+        get { return gameManager.instance.vidas; }
+    }
+
     private bool podeTomarDano = true;
 
     public bool tomandoDano = false;
@@ -49,8 +54,15 @@ public class vidaDoJogador : MonoBehaviour
 
             anim.Play("recebendodano");
 
+            gameManager.instance.vidas--;
+
             FindObjectOfType<gameOver>().MostrarGameOver();
 
+            if (gameManager.instance.vidas <= 0)
+            {
+                FindObjectOfType<gameOver>().DesativarRestart();  
+            }
+                
             StartCoroutine(Morte());
 
             return;

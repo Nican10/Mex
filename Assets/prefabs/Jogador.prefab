@@ -147,6 +147,7 @@ MonoBehaviour:
   buffAtivo: 0
   podeAtirar: 1
   sprite: {fileID: 751434211482569419}
+  danoShurikenBuff: 100
   bounceForce: 10
   danoStomp: 50
 --- !u!50 &289950905418507862
@@ -188,7 +189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44339fe38b918354baab7daab6b95b87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vida: 100
+  vida: 150
   tomandoDano: 1
 --- !u!95 &8169906838038837719
 Animator:

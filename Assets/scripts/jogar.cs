@@ -6,6 +6,7 @@ public class jogar : MonoBehaviour
 { 
     public void Jogar()
     {
+        gameManager.instance.ResetarJogo();
         SceneManager.LoadScene("tutorial");
     }
            

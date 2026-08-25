@@ -19,8 +19,8 @@ public class coletavel : MonoBehaviour
         {
             coletado = true;
 
-            collision.GetComponent<controle>().score += valorScore;
-            Debug.Log(collision.GetComponent<controle>().score);
+            gameManager.instance.score += valorScore;        
+            Debug.Log("Score atual" + gameManager.instance.score);
 
             anim.Play("coletou");
 

@@ -25,7 +25,7 @@ public class controle : MonoBehaviour
 
     public GameObject prefabShuriken;
     public Transform pontoDisparo;
-    public int score;
+   
     public TextMeshProUGUI textoScore;
     public bool buffAtivo;
     public bool podeAtirar = true;
@@ -54,7 +54,7 @@ public class controle : MonoBehaviour
     {
         float movimento = Input.GetAxis("Horizontal");
 
-        textoScore.text = "Score " + score;
+        textoScore.text = "Score " + gameManager.instance.score;
                
         rb.velocity = new Vector2(movimento * velocidade, rb.velocity.y);
         
