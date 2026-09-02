@@ -67,6 +67,15 @@ public class controle : MonoBehaviour
             transform.localScale = new Vector3(-1, 1, 1);
         }
 
+        if (rb.velocity.y < 0)
+        {
+            rb.gravityScale = 2f;
+        }
+        else
+        {
+            rb.gravityScale = 1f;
+        }
+
         if (estaNaParede && !estaNoChao)
         {
             rb.velocity = new Vector2(rb.velocity.x, -velocidadeDeslize);

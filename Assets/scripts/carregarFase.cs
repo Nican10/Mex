@@ -6,6 +6,7 @@ public class carregarFase : MonoBehaviour
 {
     public void CarregarFase(string nomeDaFase)
     {
+        gameManager.instance.ResetarJogo();
         SceneManager.LoadScene(nomeDaFase);
     }
 

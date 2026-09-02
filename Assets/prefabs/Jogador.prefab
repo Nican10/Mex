@@ -142,13 +142,12 @@ MonoBehaviour:
   forcaWallJump: {x: 8, y: 10}
   prefabShuriken: {fileID: 8219191856577417426, guid: 38a5c7bff17b41e4b8d2f662560d8473, type: 3}
   pontoDisparo: {fileID: 1233274468234211315}
-  score: 0
   textoScore: {fileID: 0}
   buffAtivo: 0
   podeAtirar: 1
   sprite: {fileID: 751434211482569419}
   danoShurikenBuff: 100
-  bounceForce: 10
+  bounceForce: 7
   danoStomp: 50
 --- !u!50 &289950905418507862
 Rigidbody2D:

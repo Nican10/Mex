@@ -45,11 +45,15 @@ public class vidaBoss : MonoBehaviour
 
     public void AtivarVulnerabilidade()
     {
+        if (vulneravel)
+        {
+            return;
+        }
         vulneravel = true;
 
         Debug.Log("Boss vulnerável");
 
-        CancelInvoke(nameof(DesativarVulnerabilidade));
+        
         Invoke(nameof(DesativarVulnerabilidade), tempoVulneravel);
 
         

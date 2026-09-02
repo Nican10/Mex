@@ -19,7 +19,7 @@ public class boss : MonoBehaviour
 
     public float tempoParadoAposHit = 1f;
 
-    private float timerParado = 0f;
+    public float timerParado = 0f;
 
     private vidaBoss vidaBossScript;
 

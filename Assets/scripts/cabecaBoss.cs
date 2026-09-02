@@ -11,6 +11,10 @@ public class cabecaBoss : MonoBehaviour
             vidaBoss vida = GetComponentInParent<vidaBoss>();
             boss bossScript = GetComponentInParent<boss>();
 
+            if(bossScript.timerParado > 0)
+            {
+                return;
+            }
 
             vida.AtivarVulnerabilidade();
             bossScript.IniciarTempoParado();
