@@ -25,6 +25,18 @@ public class spike : MonoBehaviour
             return;
         }
 
+        if (collision.gameObject.CompareTag("Bandeira"))
+        {
+            Rigidbody2D rbBandeira = collision.gameObject.GetComponent<Rigidbody2D>();
+
+            if(rbBandeira != null)
+            {
+                rbBandeira.gravityScale = 1f;
+            }
+            Destroy(collision.gameObject, 1f);
+            Destroy(gameObject, 0.1f);
+        }
+
         //quica qnd bate no chao
         if (!jaQuicou && collision.gameObject.CompareTag("Chao"))
         {
